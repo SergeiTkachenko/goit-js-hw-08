@@ -6,11 +6,14 @@ let localValueObj = {};
 
 initForm();
 
-formEl.addEventListener('input', e => {
-  localValueObj[e.target.name] = e.target.value;
+formEl.addEventListener(
+  'input',
+  throttle(e => {
+    localValueObj[e.target.name] = e.target.value;
 
-  localStorage.setItem(KEY_LOCAL_DATA, JSON.stringify(localValueObj));
-});
+    localStorage.setItem(KEY_LOCAL_DATA, JSON.stringify(localValueObj));
+  }, 500)
+);
 
 function initForm() {
   let localFormValue = localStorage.getItem(KEY_LOCAL_DATA);
