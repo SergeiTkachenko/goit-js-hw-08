@@ -1,5 +1,7 @@
 import throttle from 'lodash.throttle';
 
+console.log(111);
+
 const form = document.querySelector('.feedback-form');
 
 form.addEventListener('input', throttle(onInput, 500));
@@ -19,8 +21,6 @@ function onInput(e) {
       message: form.elements.message.value,
     })
   );
-
-  parsedLocalStorage[e.currentTarget.name] = e.currentTarget.value;
 }
 
 function saveInput() {
